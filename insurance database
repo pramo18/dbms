@@ -1,0 +1,48 @@
+create table person(
+     driverid varchar2(20),
+     name varchar2(20),
+     adress varchar2(20),
+     primary key(driverid)
+     );
+     select * from person;
+     create table car(
+     regno varchar2(20),
+     model varchar2(20),
+     year varchar2(20),
+     primary key(regno)
+     );
+     select * from car;
+     create table accident(
+     reportno number(5),
+     accdate date,
+     location varchar2(20),
+     primary key(reportno)
+     );
+     create table owns(
+     driverid varchar2(20),
+     regno varchar2(20),
+     primary key(driverid,regno),
+     foreign key(driverid)references person(driverid),
+     foreign key(regno)references car(regno)
+     );
+     create table participated(
+     driverid varchar2(20),
+     regno varchar2(20),
+     reportno number(5),
+     damageamnt number(7,2),
+     primary key(driverid,regno,reportno),
+     foreign key(driverid,regno)references owns(driverid,regno),
+     foreign key(reportno)references accident(reportno)
+     );
+     desc participated;
+     insert into person values('&driverid','&name','&adress'); 
+     insert into car values('&regno','&model','&year');
+     insert into accident values(&reportno,'&accdate','&location');
+     insert into owns values('&driverid','&regno');
+     insert into participated values('&driverid','&regno',&reportno,&damageamnt);
+     select * from person; 
+     update person set adress='ks layout' where driverid=1;
+     select * from car;
+     select * from accident;
+     select * from owns;
+     select * from participated;
