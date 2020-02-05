@@ -46,3 +46,4 @@ create table person(
      select * from accident;
      select * from owns;
      select * from participated;
+     select count(*)from accident where accdate like'__-__-02';
