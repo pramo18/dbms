@@ -1,0 +1,52 @@
+create table student         
+         (
+               Regno varchar2(20),
+               name varchar2(20),
+               major varchar2(20),
+               bdate date,
+               primary key(Regno)
+               );
+create table course
+             (
+               courseid number(20),
+               cname varchar2(20),
+               dept varchar2(20),
+               primary key(courseid)
+               );               
+create table text
+             (
+               isbn number(20),
+               book_title varchar2(20),
+               publisher varchar2(20),
+               author varchar(2),
+               primary key(isbn)
+               ); 
+create table adoption
+             (
+               courseid number(20),
+               isbn number(20),
+               sem number(2),
+               primary key(courseid,isbn),
+               foreign key (courseid) references course(courseid) on delete cascade,
+               foreign key (isbn) references text(isbn) on delete cascade
+               );   
+create table enroll
+             (
+               Regno varchar2(20),
+               courseid number(20),
+               sem number(2),
+               marks number(2),
+               primary key(Regno,courseid),
+               foreign key (Regno) references student(Regno) on delete cascade,
+               foreign key (courseid) references course(courseid) on delete cascade
+               );    
+               insert into student values('&Regno','&name','&major','&bdate');
+                 insert into course values('&courseid','&cname','&dept');
+                 insert into text values(&isbn,'&book_title','&publisher','&author');
+                 insert into adoption values(&courseid,&isbn,&sem);
+                 insert into enroll values('&Regno',&courseid,&sem,&marks);aaaaaaaaaaaaaaa
+                 select * from student;
+                 select * from course;
+                 select * from text;
+                 select * from adoption;
+                 select * from enroll;
